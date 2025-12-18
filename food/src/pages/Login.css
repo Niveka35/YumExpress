@@ -4,25 +4,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #f8fafc, white);
-  padding: 20px;
+  background-image: url("../assets/bg1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
 }
 
 /* Main box */
 .login-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 850px;
   background: white;
   border-radius: 20px;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
 /* Left panel */
 .left-panel {
-  background: linear-gradient(to bottom, #7c1975, #7c3aed);
+  background: linear-gradient(to bottom, #19217c, #61178d);
   padding: 40px;
   color: white;
   display: flex;
@@ -37,11 +41,12 @@
 }
 .left-panel h1 span {
   color: #faca51;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 2rem;
 }
 
 .left-panel ul {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .left-panel li {
@@ -51,12 +56,18 @@
 
 /* Right panel */
 .right-panel {
-  padding: 40px;
+  padding: 20px;
 }
 
 .top-bar {
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+}
+.top-bar h2 {
+  font-size: 29px;
+  font-weight: 700;
+  color: #0c7356;
+  text-align: center;
 }
 
 /* Inputs */
@@ -84,13 +95,14 @@
 .submit-btn {
   width: 100%;
   padding: 12px;
-  background: #4f46e5;
-  color: white;
+  background: #f9a03b;
+  color:rgb(129, 80, 27);
   font-weight: 600;
+  font-size: 16px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .submit-btn:disabled {

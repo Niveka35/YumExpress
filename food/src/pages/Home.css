@@ -1,16 +1,60 @@
 .home-page {
-  background: #f7f7f7;
+  background: #9dbadb;
   min-height: 100vh;
+}
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.search-bar input {
+  width: 60%;
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 15px;
 }
 
 /* HEADER */
 .home-header {
-  background: #ffffff;
-  padding: 15px 25px;
+  position: sticky;
+  top: 0;
+  background-color: #5094b1;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.hamburger {
+  font-size: 25px;
+  cursor: pointer;
+}
+.menu {
+  position: absolute; /* so it floats below header */
+  top: 100%; /* right below header */
+  left: 0;
+  width: 30%; /* full width */
+  background-color: #b9cbd3;
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  padding: 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.menu a {
+  color: rgb(44, 35, 35);
+  text-decoration: none;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  background-color: #406b85;
 }
 
 .header-left {
@@ -18,20 +62,21 @@
   align-items: center;
   font-weight: 600;
 }
-
 .location-icon {
-  margin-right: 8px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 18px;
 }
 
 .header-right .icon {
-  font-size: 20px;
   margin-left: 20px;
   cursor: pointer;
+  font-size: 25px;
 }
 
 /* BODY */
 .home-body {
-  padding: 25px;
+  padding: 20px;
 }
 
 .section {
@@ -40,35 +85,125 @@
 
 .section h2 {
   margin-bottom: 15px;
+  text-align: center;
+  color:rgb(40, 16, 114);
+  font-size: 2rem;
 }
 
 /* CATEGORY */
+
 .category-grid,
 .brand-grid,
 .item-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
-
-.category-card,
-.brand-card {
-  background: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  font-weight: 600;
+.category-card {
+  background: rgb(140, 163, 225);
+  width: 100%;
+  max-width: 260px;
+  height: 230px;              /* FIXED HEIGHT */
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;           /* VERY IMPORTANT */
   cursor: pointer;
 }
 
-/* ITEMS */
+.category-card img {
+  width: 100%;
+  height: 170px;              /* SAME FOR ALL */
+  object-fit: cover;
+}
+
+.category-card p {
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.brand-card {
+  background: rgb(140, 163, 225);
+  width: 100%;
+  max-width: 280px;
+  height: 280px;              /* SAME HEIGHT */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;        /* CENTER LOGO */
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* logo stays inside without cropping */
+  display: block; }
+
 .item-card {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
+  background: rgb(140, 163, 225);
+  width: 100%;
+  max-width: 260px;
+  height: 300px;              /* TALL CARD */
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.item-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.item-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.item-card p {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .item-card span {
-  color: green;
-  font-weight: bold;
+  color: #1b4f72;
+  font-size: 17px;
 }
+
+.qty-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qty-box button {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  background: green;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+.category-card:hover,
+.brand-card:hover,
+.item-card:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
