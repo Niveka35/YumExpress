@@ -9,8 +9,23 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 app.use("/api/auth", authRoutes);
+const reviewSchema = new mongoose.Schema({
+  name: String,
+  rating: Number,
+  comment: String
+});
+
+const Review = mongoose.model("Review", reviewSchema);
+const itemRoutes = require("./routes/Items");
+app.use("/items", itemRoutes);
+
+app.get("/reviews", async (req, res) => {
+  const reviews = await Review.find();
+  res.json(reviews);
+});
+
+
 
 mongoose
   .connect(process.env.MONGO_URI)
