@@ -3,27 +3,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-const authRoutes = require("./routes/Auth");
+
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+const authRoutes = require("./routes/Auth");
 app.use("/api/auth", authRoutes);
-const reviewSchema = new mongoose.Schema({
-  name: String,
-  rating: Number,
-  comment: String
-});
-
-const Review = mongoose.model("Review", reviewSchema);
 const itemRoutes = require("./routes/Items");
 app.use("/items", itemRoutes);
-
-app.get("/reviews", async (req, res) => {
-  const reviews = await Review.find();
-  res.json(reviews);
-});
+const reviewRoutes = require("./routes/Reviews");
+app.use("/reviews", reviewRoutes);
 
 
 
