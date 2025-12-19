@@ -19,6 +19,9 @@ import ritzbury from "../assets/brands/ritzbery.png";
 import cans from "../assets/categories/cans.png";
 import household from "../assets/categories/household.png";
 import baby from "../assets/categories/baby.png";
+import local from "../assets/brands/local.png";
+import kist from "../assets/brands/kist.png";
+import Reviews from "./Reviews";
 export default function Home() {
   const user = JSON.parse(localStorage.getItem("user"));
   const [search, setSearch] = useState("");
@@ -43,11 +46,6 @@ export default function Home() {
     axios
       .get("http://localhost:5000/items")
       .then((res) => setItems(res.data))
-      .catch((err) => console.log(err));
-
-    axios
-      .get("http://localhost:5000/reviews")
-      .then((res) => setReviews(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -102,26 +100,42 @@ export default function Home() {
       </header>
 
       <main className="home-body">
-        <div className="search-bar" id="search">
-          <input
-            type="text"
-            placeholder="Search groceries..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
+        {/* HERO SECTION */}
+<section className="hero-section">
+  <div className="hero-content">
+    <h1>Order Your Daily<br />Groceries</h1>
+    <p className="hero-sub">Home order-Quick pickup-Zero waiting</p>
+
+    <div className="hero-search">
+      <input
+        type="text"
+        placeholder="Search your daily groceries"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button onClick={() => scrollToSection("popular")}>Search</button>
+    </div>
+  </div>
+</section>
+
         <section className="section" id="popular">
           <h2>All Groceries</h2>
           <div className="item-grid">
             {items
-              .filter((item) =>
-                item.name.toLowerCase().includes(search.toLowerCase())
-              )
+              .filter((item) => {
+    const term = search.toLowerCase();
+
+    return (
+      item.name.toLowerCase().includes(term) ||
+      item.brand?.toLowerCase().includes(term) ||
+      item.category?.toLowerCase().includes(term)
+    );
+  })
               .map((item) => (
                 <div className="item-card" key={item._id}>
                   <img src={item.img} alt={item.name} />
-                  <p>{item.name}</p>
-                  <span>{item.quantity} Rs. {item.price}</span>
+                  <h4>{item.name}</h4>
+                  <p>{item.quantity} &nbsp;&nbsp; Rs. {item.price}</p>
                   <div className="qty-box">
                     <button onClick={() => decreaseQty(item._id)}>−</button>
                     <span>{quantities[item._id] || 0}</span>
@@ -221,23 +235,20 @@ export default function Home() {
               {" "}
               <img src={ritzbury} alt="ritzbury" />{" "}
             </div>{" "}
+            <div className="brand-card">
+              {" "}
+              <img src={kist} alt="kist" />{" "}
+            </div>{" "}
+            <div className="brand-card">
+              {" "}
+              <img src={local} alt="local" />{" "}
+            </div>{" "}
           </div>{" "}
         </section>
-        <section className="section reviews" id="reviews">
-          <h2>Customer Reviews</h2>
-          <div className="review-grid">
-            {reviews.map((review) => (
-              <div className="review-card" key={review._id}>
-                <p>{"⭐".repeat(review.rating)}</p>
-                <p>"{review.comment}"</p>
-                <span>- {review.name}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Reviews/>
       </main>
       <footer className="home-footer">
-        <p>Order groceries online and pick up in-store. No delivery</p>
+        <p>No waiting No queues Just quick pickup-That's our promise</p>
         <p>📞 +94 76 339 7481 ✉️ k.niveka03@gmail.com</p>
         <p>
           {" "}
