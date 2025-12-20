@@ -12,11 +12,29 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-// GET ALL ITEMS
+// GET ITEMS WITH OPTIONAL FILTERS
 router.get("/", async (req, res) => {
-  const items = await Item.find();
-  res.json(items);
+  try {
+    const { category, brand } = req.query;
+
+    let query = {};
+
+    // Filter by category if provided
+    if (category) {
+      query.category = new RegExp(`^${category}$`, "i"); // case-insensitive
+    }
+
+    // Filter by brand if provided
+    if (brand) {
+      query.brand = new RegExp(`^${brand}$`, "i"); // case-insensitive
+    }
+
+    const items = await Item.find(query);
+    res.json(items); // Return filtered items
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
+
 
 module.exports = router;
