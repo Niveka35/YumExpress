@@ -30,7 +30,7 @@
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .review-form button:hover {
@@ -44,7 +44,7 @@
 }
 
 .review-card {
-  background-color: #989696;
+  background-color: #c8c6c6;
   padding: 8px;
   border-radius: 12px;
   text-align: left;
@@ -59,11 +59,11 @@
 
 .review-card p:nth-child(2) {
   font-size: 18px;
-  color: #333;
+  color: #232222;
   margin-bottom: 8px;
 }
 
 .review-card span {
   font-size: 14px;
-  color: #313030;
+  color: #1e1d1d;
 }

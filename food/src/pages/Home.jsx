@@ -67,6 +67,12 @@ export default function Home() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
+  const scrollToSearch = () => {
+  document.getElementById("search").scrollIntoView({
+    behavior: "smooth"
+  });
+};
+
 
   return (
     <div className="home-page">
@@ -103,10 +109,15 @@ export default function Home() {
         {/* HERO SECTION */}
 <section className="hero-section">
   <div className="hero-content">
-    <h1>Order Your Daily<br />Groceries</h1>
+    <h1>Welcome to Niveka Store</h1>
+    <h2>Order Your Daily<br />Groceries</h2>
     <p className="hero-sub">Home order-Quick pickup-Zero waiting</p>
-
-    <div className="hero-search">
+    <div className="scroll-arrow" onClick={scrollToSearch}>↓ </div>
+  </div>
+</section>
+ <section className="section"   id="search" >
+          <h2>All Groceries</h2>
+          <div className="hero-search" id="popular">
       <input
         type="text"
         placeholder="Search your daily groceries"
@@ -115,11 +126,6 @@ export default function Home() {
       />
       <button onClick={() => scrollToSection("popular")}>Search</button>
     </div>
-  </div>
-</section>
-
-        <section className="section" id="popular">
-          <h2>All Groceries</h2>
           <div className="item-grid">
             {items
               .filter((item) => {

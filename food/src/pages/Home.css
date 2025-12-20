@@ -1,20 +1,6 @@
 .home-page {
-  background: #9dbadb;
+  background:  url("../assets/bg2.png") no-repeat center center/cover;
   min-height: 100vh;
-}
-.search-bar {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25px;
-}
-
-.search-bar input {
-  width: 60%;
-  padding: 12px 15px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  outline: none;
-  font-size: 15px;
 }
 
 /* HEADER */
@@ -76,7 +62,7 @@
 
 /* BODY */
 .home-body {
-  padding: 20px;
+  padding: 5px;
 }
 
 .section {
@@ -86,57 +72,120 @@
 .section h2 {
   margin-bottom: 15px;
   text-align: center;
-  color:rgb(40, 16, 114);
-  font-size: 2rem;
+  color:rgb(9, 9, 9);
+  font-size: 2.1rem;
+  text-transform: uppercase;
 }
 /* HERO SECTION */
 .hero-section {
   width: 100%;
-  height: 90vh;
-  background:  url("../assets/bg2.png") no-repeat center center/cover;
-  border-radius: 15px;
+  height: 100vh; /* full screen hero */
+  background: url("../assets/bg3.png") no-repeat center center/cover;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.3s ease;
+  padding: 0 20px;
   box-sizing: border-box;
   overflow: hidden;
-  transition: 0.2s ease;
-  margin-bottom: 50px;
+  position: relative;
 }
-.hero-section:hover {
-  transform: scale(1.02);}
+
+/* Soft overlay for readability */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* smooth dark overlay */
+  backdrop-filter: blur(3px);
+}
 
 .hero-content {
-  text-align: center;     /* 👈 center text */
-  max-width: 600px;
+  text-align: center;
+  max-width: 900px;
   width: 100%;
-   position: relative;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1.2s ease;
 }
 
-.hero-section h1 {
-  font-size: clamp(40px, 5vw, 75px);
-  font-weight: 800;
-  color: #0d2f38;
-  line-height: 1.2;
-   margin-top:0px;
-   margin-bottom: 1px;
-}
-
-.hero-sub {
-  font-size: 25px;
+/* Stylish category text */
+.hero-section h2 {
+  font-size: clamp(35px, 4vw, 60px);
   font-weight: 700;
-  color: #86117a;
-  margin-bottom: 30px;
+  color: #ffde74; 
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
 }
+
+/* Main headline */
+.hero-section h1 {
+  font-size: clamp(45px, 6vw, 90px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: capitalize;
+  text-shadow: 0px 6px 25px rgba(0, 0, 0, 0.9);
+}
+
+/* Subtitle */
+.hero-sub {
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 600;
+  color: #f8f8f8;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Smooth entrance animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.scroll-arrow {
+  margin-top: 20px;
+  font-size: 55px;
+  cursor: pointer;
+  color: #ffffff;
+  animation: bounce 1.5s infinite;
+  transition: 0.3s ease;
+  font-weight: 2000;
+  text-shadow: 0px 4px 10px rgba(0,0,0,0.7);
+}
+
+.scroll-arrow:hover {
+  transform: scale(1.2);
+  color: #ffde74;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
 
 .hero-search {
-  margin-top: 10px;
+  margin-top: 30px;
   display: flex;
   justify-content: center; /* 👈 center search bar */
   gap: 10px;
   width: 100%; 
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .hero-search input {
@@ -145,24 +194,26 @@
   border-radius: 25px;
   border: none;
   font-size: 17px;
- background: rgba(255, 255, 255, 0.3);
+ background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   outline: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .hero-search button {
-  background: #e8e699;
-  color: rgb(33, 33, 33);
+  background: #92e4c5;
+  color:rgb(25, 27, 34);
   border: none;
   padding: 12px 25px;
   border-radius: 25px;
   cursor: pointer;
   font-size: 17px;
+  font-weight: 530;
   transition: 0.3s ease;
 }
 .hero-search button:hover {
   transform: scale(1.05);
+  background: #1fab0a;
 }
 
 /* CATEGORY */
@@ -295,12 +346,12 @@
 }
 
 .home-footer {
-  background-color: #323030; /* Dark, modern look */
-  color: #f0f0f0; /* Light text */
+  background-color: #323030; 
+  color: #f0f0f0; 
   text-align: center;
-  padding: 40px 20px;
+  padding: 25px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-top: 2px solid #7e7575; /* subtle separation */
+  border-top: 2px solid #7e7575; 
 }
 
 .home-footer p {

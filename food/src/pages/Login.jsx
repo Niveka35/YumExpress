@@ -98,12 +98,9 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-container">
-
         {/* LEFT PANEL */}
         <div className="left-panel">
-          <h1>
-            Welcome to <span>Niveka Grocery Store</span>
-          </h1>
+           <h1> Welcome to <span>Niveka Grocery Store</span> </h1>
           <p>Create an account or sign in to continue.</p>
           <ul>
             <li>Save more on every grocery trip</li>
