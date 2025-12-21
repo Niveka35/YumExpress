@@ -15,7 +15,8 @@ const itemRoutes = require("./routes/Items");
 app.use("/items", itemRoutes);
 const reviewRoutes = require("./routes/Reviews");
 app.use("/reviews", reviewRoutes);
-
+const placeOrderRoutes = require("./routes/PlaceOrder");
+app.use("/api/place-order", placeOrderRoutes);
 
 
 mongoose
