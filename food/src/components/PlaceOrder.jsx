@@ -27,7 +27,7 @@ const PlaceOrder = ({ cartItems, total, onClose }) => {
       });
 
       alert("Order placed successfully! Check your email for confirmation.");
-      onClose(); // close cart dropdown
+      onClose(); 
     } catch (err) {
       console.error(err);
       alert("Error placing order. Please try again.");

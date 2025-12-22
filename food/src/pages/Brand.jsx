@@ -5,7 +5,7 @@ import "./Brand.css";
 import { CartContext } from "../context/CartContext";
 
 const Brand = () => {
-  const { brandName } = useParams(); // Get brand name from URL
+  const { brandName } = useParams(); 
   const [items, setItems] = useState([]);
   const { cartItems, updateQty, addToCart } = useContext(CartContext);
  const handleDecrease = (item) => {

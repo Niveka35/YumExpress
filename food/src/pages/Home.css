@@ -16,7 +16,6 @@ html, body {
   flex-direction: column;
 }
 
-/* HEADER */
 .home-header {
   position: sticky;
   top: 0;
@@ -32,13 +31,13 @@ html, body {
   cursor: pointer;
 }
 .menu {
-  position: absolute; /* so it floats below header */
-  top: 100%; /* right below header */
+  position: absolute; 
+  top: 100%; 
   left: 0;
-  width: 30%; /* full width */
+  width: 30%; 
   background-color: #b9cbd3;
   display: flex;
-  flex-direction: column; /* stack items vertically */
+  flex-direction: column; 
   padding: 10px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   z-index: 999;
@@ -72,8 +71,6 @@ html, body {
   cursor: pointer;
   font-size: 25px;
 }
-
-/* BODY */
 .home-body {
   padding: 5px;
 }
@@ -89,10 +86,9 @@ html, body {
   font-size: 2.1rem;
   text-transform: uppercase;
 }
-/* HERO SECTION */
 .hero-section {
   width: 100%;
-  height: 100vh; /* full screen hero */
+  height: 100vh; 
   background: url("../assets/bg3.png") no-repeat center center/cover;
   border-radius: 20px;
   display: flex;
@@ -103,13 +99,11 @@ html, body {
   overflow: hidden;
   position: relative;
 }
-
-/* Soft overlay for readability */
 .hero-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35); /* smooth dark overlay */
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(3px);
 }
 
@@ -121,8 +115,6 @@ html, body {
   z-index: 2;
   animation: fadeInUp 1.2s ease;
 }
-
-/* Stylish category text */
 .hero-section h2 {
   font-size: clamp(35px, 4vw, 60px);
   font-weight: 700;
@@ -133,7 +125,6 @@ html, body {
   text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
 }
 
-/* Main headline */
 .hero-section h1 {
   font-size: clamp(45px, 6vw, 90px);
   font-weight: 900;
@@ -144,7 +135,6 @@ html, body {
   text-shadow: 0px 6px 25px rgba(0, 0, 0, 0.9);
 }
 
-/* Subtitle */
 .hero-sub {
   font-size: clamp(18px, 2vw, 28px);
   font-weight: 600;
@@ -155,7 +145,6 @@ html, body {
   text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
 }
 
-/* Smooth entrance animation */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -229,8 +218,6 @@ html, body {
   background: #1fab0a;
 }
 
-/* CATEGORY */
-
 .category-grid,
 .brand-grid,
 .item-grid {
@@ -244,20 +231,20 @@ html, body {
   background: rgb(140, 163, 225);
   width: 100%;
   max-width: 260px;
-  height: 230px;              /* FIXED HEIGHT */
+  height: 230px;              
   margin: auto;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   overflow: hidden; 
-  text-decoration: none;          /* VERY IMPORTANT */
+  text-decoration: none;          
   cursor: pointer;
 }
 
 .category-card img {
   width: 100%;
-  height: 170px;              /* SAME FOR ALL */
+  height: 170px;              
   object-fit: cover;
 }
 
@@ -273,11 +260,11 @@ html, body {
   background: rgb(140, 163, 225);
   width: 100%;
   max-width: 280px;
-  height: 280px;              /* SAME HEIGHT */
+  height: 280px;              
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   display: flex;
-  align-items: center;        /* CENTER LOGO */
+  align-items: center;
   justify-content: center;
   cursor: pointer;
   overflow: hidden;
@@ -286,14 +273,14 @@ html, body {
 .brand-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* logo stays inside without cropping */
+  object-fit: cover; 
   display: block; }
 
 .item-card {
   background: rgb(140, 163, 225);
   width: 100%;
   max-width: 260px;
-  height: 300px;              /* TALL CARD */
+  height: 300px;             
   margin: auto;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);

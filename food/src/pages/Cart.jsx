@@ -8,7 +8,6 @@ export default function Cart() {
   const { cartItems, updateQty, total } = useContext(CartContext);
   const navigate = useNavigate();
 
-  // Only Cash on Delivery
   const payment = "cash";
 
   const placeOrder = async () => {
@@ -17,7 +16,7 @@ export default function Cart() {
         items: cartItems,
         total,
         paymentMethod: "Cash on Pickup",
-        email: email
+        email: email,
       });
 
       alert("Order Confirmed! Check your email for details.");
@@ -30,8 +29,6 @@ export default function Cart() {
   return (
     <div className="cart-container">
       <h2 className="cart-title">Your Basket</h2>
-
-      {/* Items List */}
       <div className="item-list">
         {cartItems.length === 0 ? (
           <p className="empty-cart">Your cart is empty.</p>
@@ -54,17 +51,13 @@ export default function Cart() {
           ))
         )}
       </div>
-
-      {/* Total */}
       <h3 className="total">Total: Rs. {total}</h3>
 
-      {/* Payment Method */}
       <div className="payment-box">
         <h4>Payment Method</h4>
         <p className="cash-only">Cash on Pickup Only ✔</p>
       </div>
 
-      {/* Buttons */}
       <div className="btn-row">
         <button className="place-order-btn" onClick={placeOrder}>
           Place Order

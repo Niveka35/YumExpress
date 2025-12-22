@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState,useContext} from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./Category.css";
 import { CartContext } from "../context/CartContext";
@@ -7,7 +7,7 @@ import { CartContext } from "../context/CartContext";
 export default function CategoryPage() {
   const { name } = useParams();
   const [items, setItems] = useState([]);
-    const { cartItems, updateQty, addToCart } = useContext(CartContext);
+  const { cartItems, updateQty, addToCart } = useContext(CartContext);
   const handleDecrease = (item) => {
     const existing = cartItems.find((i) => i._id === item._id);
     if (existing) {
@@ -15,7 +15,7 @@ export default function CategoryPage() {
       updateQty(item._id, newQty);
     }
   };
-  
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/items?category=${name}`)
@@ -23,27 +23,32 @@ export default function CategoryPage() {
       .catch((err) => console.log(err));
   }, [name]);
 
-return (
-  <div className="category-page">
-    <h1>Category-{name}</h1>
+  return (
+    <div className="category-page">
+      <h1>Category-{name}</h1>
       <div className="item-grid">
         {items.length === 0 ? (
           <p class="no">No items found in this category.</p>
         ) : (
           items.map((item) => {
-          const qty = cartItems.find((i) => i._id === item._id)?.qty || 0;
-          return (
-          <div className="item-card" key={item._id}>
-            <img src={item.img} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.quantity} &nbsp;&nbsp; Rs. {item.price}</p>
-            <div className="qty-box">
-              <button  onClick={() => handleDecrease(item)}>−</button>
-              <span>{qty}</span>
-              <button onClick={() => addToCart(item)}>+</button>
-            </div>
-          </div>
-        )}))}
-         </div>
+            const qty = cartItems.find((i) => i._id === item._id)?.qty || 0;
+            return (
+              <div className="item-card" key={item._id}>
+                <img src={item.img} alt={item.name} />
+                <p>{item.name}</p>
+                <p>
+                  {item.quantity} &nbsp;&nbsp; Rs. {item.price}
+                </p>
+                <div className="qty-box">
+                  <button onClick={() => handleDecrease(item)}>−</button>
+                  <span>{qty}</span>
+                  <button onClick={() => addToCart(item)}>+</button>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
-  )}
+  );
+}

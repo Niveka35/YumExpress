@@ -3,14 +3,11 @@ import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function Login() {
   const [mode, setMode] = React.useState("signin");
   const [loading, setLoading] = React.useState(false);
   const [message, setMessage] = React.useState(null);
   const navigate = useNavigate();
-
 
   const [form, setForm] = React.useState({
     name: "",
@@ -32,58 +29,56 @@ export default function Login() {
       if (!form.name) return "Please enter your name.";
       if (form.password.length < 6)
         return "Password must be at least 6 characters.";
-      if (form.password !== form.confirm)
-        return "Passwords do not match.";
+      if (form.password !== form.confirm) return "Passwords do not match.";
     }
     return null;
-    
   }
 
   async function handleSubmit(e) {
-  e.preventDefault();
-  setMessage(null);
+    e.preventDefault();
+    setMessage(null);
 
-  const err = simpleValidate();
-  if (err) {
-    setMessage({ type: "error", text: err });
-    return;
-  }
+    const err = simpleValidate();
+    if (err) {
+      setMessage({ type: "error", text: err });
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    if (mode === "signup") {
-      await axios.post("http://localhost:5000/api/auth/signup", {
-        name: form.name,
-        email: form.email,
-        password: form.password,
-      });
-
-      setMessage({ type: "success", text: "Account created! Please sign in." });
-      setMode("signin");
-      resetFormAndMsg();
-    } else {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/signin",
-        {
+    try {
+      if (mode === "signup") {
+        await axios.post("http://localhost:5000/api/auth/signup", {
+          name: form.name,
           email: form.email,
           password: form.password,
-        }
-      );
+        });
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+        setMessage({
+          type: "success",
+          text: "Account created! Please sign in.",
+        });
+        setMode("signin");
+        resetFormAndMsg();
+      } else {
+        const res = await axios.post("http://localhost:5000/api/auth/signin", {
+          email: form.email,
+          password: form.password,
+        });
 
-      navigate("/home");
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
+        navigate("/home");
+      }
+    } catch (err) {
+      setMessage({
+        type: "error",
+        text: err.response?.data?.msg || "Something went wrong",
+      });
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    setMessage({
-      type: "error",
-      text: err.response?.data?.msg || "Something went wrong",
-    });
-  } finally {
-    setLoading(false);
-  }
   }
 
   function resetFormAndMsg() {
@@ -99,9 +94,11 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-container">
-        {/* LEFT PANEL */}
         <div className="left-panel">
-           <h1> Welcome to <span>Niveka Grocery Store</span> </h1>
+          <h1>
+            {" "}
+            Welcome to <span>Niveka Grocery Store</span>{" "}
+          </h1>
           <p>Create an account or sign in to continue.</p>
           <ul>
             <li>Save more on every grocery trip</li>
@@ -110,9 +107,7 @@ export default function Login() {
           </ul>
         </div>
 
-        {/* RIGHT PANEL */}
         <div className="right-panel">
-
           <div className="top-bar">
             <h2>{mode === "signin" ? "Sign in" : "Sign up"}</h2>
             <p>
@@ -123,7 +118,6 @@ export default function Login() {
           </div>
 
           <form onSubmit={handleSubmit}>
-
             {mode === "signup" && (
               <div className="input-box">
                 <label>Full name</label>
@@ -172,9 +166,7 @@ export default function Login() {
             )}
 
             {message && (
-              <div className={`msg ${message.type}`}>
-                {message.text}
-              </div>
+              <div className={`msg ${message.type}`}>{message.text}</div>
             )}
 
             <button className="submit-btn" type="submit" disabled={loading}>
@@ -215,7 +207,6 @@ export default function Login() {
               </>
             )}
           </div>
-
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-/* Full page background */
+
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -10,8 +10,6 @@
   background-repeat: no-repeat;
   padding: 30px;
 }
-
-/* Main box */
 .login-container {
   width: 100%;
   max-width: 850px;
@@ -23,8 +21,6 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   margin-bottom: 20px;
 }
-
-/* Left panel */
 .left-panel {
   background: linear-gradient(to bottom, #19217c, #61178d);
   padding: 40px;
@@ -53,8 +49,6 @@
   margin-bottom: 8px;
   font-size: 15px;
 }
-
-/* Right panel */
 .right-panel {
   padding: 20px;
 }
@@ -70,7 +64,6 @@
   text-align: center;
 }
 
-/* Inputs */
 .input-box {
   margin-bottom: 15px;
 }
@@ -91,7 +84,6 @@
   outline: none;
 }
 
-/* Submit button */
 .submit-btn {
   width: 100%;
   padding: 12px;
@@ -109,8 +101,6 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-/* Messages */
 .msg {
   padding: 10px;
   border-radius: 6px;
@@ -127,8 +117,6 @@
   background: #dcfce7;
   color: #15803d;
 }
-
-/* Footer */
 .switch-footer {
   text-align: center;
   margin-top: 20px;

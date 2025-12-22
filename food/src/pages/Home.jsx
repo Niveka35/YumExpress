@@ -77,21 +77,22 @@ export default function Home() {
               );
             })
             .map((item) => {
-          const qty = cartItems.find((i) => i._id === item._id)?.qty || 0;
-          return (
-              <div className="item-card" key={item._id}>
-                <img src={item.img} alt={item.name} />
-                <h4>{item.name}</h4>
-                <p>
-                  {item.quantity} &nbsp;&nbsp; Rs. {item.price}
-                </p>
-                <div className="qty-box">
-                  <button onClick={() => handleDecrease(item)}>−</button>
-                  <span>{qty}</span>
-                  <button onClick={() => addToCart(item)}>+</button>
+              const qty = cartItems.find((i) => i._id === item._id)?.qty || 0;
+              return (
+                <div className="item-card" key={item._id}>
+                  <img src={item.img} alt={item.name} />
+                  <h4>{item.name}</h4>
+                  <p>
+                    {item.quantity} &nbsp;&nbsp; Rs. {item.price}
+                  </p>
+                  <div className="qty-box">
+                    <button onClick={() => handleDecrease(item)}>−</button>
+                    <span>{qty}</span>
+                    <button onClick={() => addToCart(item)}>+</button>
+                  </div>
                 </div>
-              </div>
-            )})}
+              );
+            })}
         </div>
       </section>
       <CategoryPage />

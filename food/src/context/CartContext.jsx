@@ -26,17 +26,21 @@ export const CartProvider = ({ children }) => {
 
   const updateQty = (id, qty) => {
     setCartItems((prev) =>
-      qty <= 0 ? prev.filter((item) => item._id !== id) : prev.map((i) => i._id === id ? { ...i, qty } : i)
+      qty <= 0
+        ? prev.filter((item) => item._id !== id)
+        : prev.map((i) => (i._id === id ? { ...i, qty } : i))
     );
   };
-const clearCart = () => {
-  setCartItems([]);
-};
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, updateQty, total,clearCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, updateQty, total, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
