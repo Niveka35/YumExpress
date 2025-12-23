@@ -7,10 +7,22 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 
+function Layout({ children }) {
+  const location = useLocation();
+  const hideHeaderFooter = location.pathname === "/"; // hide for login page
+
+  return (
+    <>
+      {!hideHeaderFooter && <Header />}
+      {children}
+      {!hideHeaderFooter && <Footer />}
+    </>
+  );
+}
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Layout>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
@@ -18,7 +30,7 @@ function App() {
         <Route path="/brand/:brandName" element={<Brand />} /> 
         <Route path="/cart" element={<Cart />} />
       </Routes>
-      <Footer />
+      </Layout>
     </BrowserRouter>
   );
 }
