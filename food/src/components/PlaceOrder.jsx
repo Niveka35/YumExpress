@@ -42,25 +42,8 @@ const PlaceOrder = ({ cartItems, total, onOrderSuccess }) => {
       setLoading(false);
     }
   };
-
-  const handleClose = () => setOrderPlaced(false);
-
   return (
     <>
-      {orderPlaced && (
-        <div className="modal-overlay">
-          <div className="modal-box">
-            <div className="green-tick">&#10004;</div>
-            <h2>Order Placed Successfully!</h2>
-            <p>Thank you! Your order will be ready for pickup.</p>
-            <button className="close-btn" onClick={handleClose}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
-      {!orderPlaced && (
         <button
           className="place-order-btn"
           onClick={handlePlaceOrder}
@@ -68,7 +51,6 @@ const PlaceOrder = ({ cartItems, total, onOrderSuccess }) => {
         >
           {loading ? "Placing..." : "Place Order"}
         </button>
-      )}
     </>
   );
 };
